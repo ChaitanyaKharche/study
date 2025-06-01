@@ -1,0 +1,26 @@
+@"
+# Python ignores
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data files
+*.gguf
+*.json
+*.txt
+*.bin
+
+# Secrets and configurations
+.env
+.webui_secret_key
+
+# Torch binaries
+*.so
+*.dll
+*.pyd
+
+# Temporary files
+*.tmp
+*.bak
+"@ | Set-Content .gitignore -Encoding UTF8
