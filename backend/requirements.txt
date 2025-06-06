@@ -1,0 +1,12 @@
+Flask
+Flask-CORS
+PyMuPDF
+sentence-transformers
+faiss-cpu
+numpy
+langchain
+langchain_community
+requests # To communicate with Ollama API
+python-dotenv # Optional, for managing environment variables like OLLAMA_BASE_URL
+scikit-learn # For cosine similarity if needed outside FAISS
+nltk # For sentence tokenization

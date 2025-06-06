@@ -1,0 +1,25 @@
+printf "# Python
+__pycache__/
+*.py[cod]
+env/
+venv/
+*.egg-info
+.env
+nltk_data_local/
+
+# Node.js / Frontend
+node_modules/
+build/
+dist/
+.pnp
+.pnp.js
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Archives & Logs
+*.zip
+*.log
+" > .gitignore

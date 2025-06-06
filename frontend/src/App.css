@@ -1,0 +1,148 @@
+/* frontend/src/App.css */
+* { /* Add this for universal box-sizing */
+  box-sizing: border-box;
+}
+
+.App {
+    text-align: center;
+    font-family: sans-serif;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .App-header h1 {
+    margin: 0;
+  }
+  
+  .App-main {
+    display: flex;
+    flex-direction: column; /* Stack controls and content on smaller screens */
+    padding: 10px;
+    gap: 20px; /* Space between sections */
+  }
+  
+  .controls-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .content-section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%; /* Be explicit */
+  }
+  
+  .mindmap-container, .qna-container {
+    flex: 1;
+    min-width: 0; /* Crucial for preventing content from expanding flex item */
+    /* overflow: hidden; -- Let's see if Cytoscape handles its own overflow better first,
+                           or if this causes issues with its viewport.
+                           Can be re-added if necessary. The inner Cytoscape div has it. */
+    background-color: #ffffff;
+    padding: 20px; /* This padding will reduce the usable area for Cytoscape */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 550px; 
+    display: flex; /* Add this to make children (like CytoscapeComponent) fill height */
+    flex-direction: column; /* Stack children vertically if needed */
+  }
+  
+
+  .mindmap-container > div { /* Target div created by ReactCytoscapeJS if it's the direct child */
+    width: 100% !important; /* Force width */
+    height: 100% !important; /* Force height to fill .mindmap-container's usable space */
+  }
+
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .content-section {
+      flex-direction: column; /* Stack mindmap and QnA on smaller screens */
+    }
+  }
+  
+  
+  .App-footer {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
+  .loading-message {
+    color: blue;
+  }
+  
+  /* FileUpload.js specific */
+  .FileUpload form input[type="file"] {
+    margin-right: 10px;
+  }
+  .FileUpload form button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .FileUpload form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .FileUpload p {
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+  
+  /* QnAInterface.js specific */
+  .QnAInterface form textarea {
+    width: calc(100% - 22px); /* Account for padding/border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  .QnAInterface form button {
+     padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .QnAInterface form button:disabled {
+    background-color: #ccc;
+  }
+  .QnAInterface .answer-container {
+    margin-top: 20px;
+    text-align: left;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+  .QnAInterface .answer-container h4 {
+    margin-top: 0;
+  }
+  .QnAInterface .answer-container ul {
+    padding-left: 20px;
+  }
+  .QnAInterface .answer-container li {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+    word-break: break-all; /* Break long source text */
+  }
