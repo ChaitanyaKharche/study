@@ -1,4 +1,4 @@
-CogniMap Studio 🧠✨
+#CogniMap Studio 🧠✨#
 Transform your documents into interactive, queryable mind maps using local AI.
 
 CogniMap Studio is designed to run entirely on your own machine, making it perfect for private study and for users with limited VRAM (e.g., 8GB). It uses the power of Ollama to turn dense materials into visual, easy-to-explore learning tools.
