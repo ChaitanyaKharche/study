@@ -1,111 +1,114 @@
-# CogniMap Studio - AI-Powered Mind Map Learning Environment
+CogniMap Studio 🧠✨
+Transform your documents into interactive, queryable mind maps using local AI.
 
-CogniMap Studio helps you transform your course materials into interactive mind maps and query them using local AI models. This project is an MVP designed for users with limited VRAM (e.g., 8GB), leveraging Ollama for serving LLMs.
+CogniMap Studio is designed to run entirely on your own machine, making it perfect for private study and for users with limited VRAM (e.g., 8GB). It uses the power of Ollama to turn dense materials into visual, easy-to-explore learning tools.
 
-## Features (MVP)
+A mind map generated from a document.
 
-* Upload PDF and TXT documents.
-* Generate a basic mind map based on semantic chunks and their relationships.
-* Interactive mind map visualization using Cytoscape.js.
-* Query your documents using a RAG (Retrieval Augmented Generation) pipeline with a local LLM.
+## Features
+📚 Upload Your Documents: Works seamlessly with PDF and TXT files.
+
+🗺️ Auto-Generate Mind Maps: Automatically extracts key concepts and their relationships to build a visual map of your material.
+
+✍️ Interact & Explore: A fully interactive and editable mind map powered by Cytoscape.js.
+
+💬 Ask Your Documents Anything: Use a built-in RAG pipeline to chat with your materials, getting answers from a local LLM without your data ever leaving your computer.
 
 ## Tech Stack
+Category	Technologies
+Backend	Python, Flask, LangChain
+Frontend	React, Cytoscape.js, Axios
+AI/ML	Ollama, FAISS (CPU), Sentence-Transformers
+Models	all-MiniLM-L6-v2 (Embeddings), mistral:instruct / llama3:8b (LLM)
 
-* **Backend:** Python, Flask, Sentence-Transformers, FAISS-cpu, LangChain (for RAG), Ollama (for LLM)
-* **Frontend:** React, Cytoscape.js, Axios
-* **AI Models:**
-    * Embeddings: `sentence-transformers/all-MiniLM-L6-v2`
-    * LLM for Q&A: Served via Ollama (e.g., `mistral:instruct`, `llama3:8b-instruct`)
+Export to Sheets
+## Getting Started
+Follow these steps to get CogniMap Studio running on your local machine.
 
-## Prerequisites
+### 1. Prerequisites
+Make sure you have the following installed:
 
-1.  **Python 3.9+**
-2.  **Node.js and npm/yarn**
-3.  **Ollama:** Install from [https://ollama.com/](https://ollama.com/)
-4.  **Pull an LLM model via Ollama:**
-    * Open your terminal and run:
-        ```bash
-        ollama pull mistral:instruct
-        # OR for a slightly more capable model (might be slower on 8GB VRAM)
-        ollama pull llama3:8b-instruct
-        ```
-    * Ensure Ollama is running (usually it starts a background server). By default, it serves on `http://localhost:11434`.
+Git: To clone the repository.
 
-## Setup
+Python 3.9+: For the backend server.
 
-### Backend
+Node.js & npm: For the frontend application.
 
-1.  Navigate to the `backend` directory:
-    ```bash
-    cd backend
-    ```
-2.  Create and activate a Python virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-3.  Install Python dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  Create a `data` directory if it doesn't exist:
-    ```bash
-    mkdir -p data/uploads data/faiss_indexes data/mind_maps
-    ```
+Ollama: Install from the official Ollama website.
 
-### Frontend
+### 2. Clone the Repository
+Bash
 
-1.  Navigate to the `frontend` directory:
-    ```bash
-    cd frontend
-    ```
-2.  Install Node.js dependencies:
-    ```bash
-    npm install
-    # OR
-    yarn install
-    ```
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+### 3. Set Up Ollama & AI Models
+First, ensure the Ollama server is running. Then, pull the LLM you want to use. mistral:instruct is recommended for systems with 8GB VRAM.
 
-## Running the Application
+Bash
 
-1.  **Start Ollama (if not already running):** Usually, Ollama runs as a background service after installation. Verify it's accessible (e.g., by visiting `http://localhost:11434` in your browser or using `ollama list`).
+# Recommended for 8GB VRAM
+ollama pull mistral:instruct
 
-2.  **Start the Backend Server:**
-    * Open a terminal, navigate to the `backend` directory, activate the virtual environment.
-    * Run the Flask app:
-        ```bash
-        flask run
-        ```
-    * It should start on `http://127.0.0.1:5000` by default.
+# A more capable alternative
+ollama pull llama3:8b-instruct
+### 4. Set Up the Backend
+Open a terminal in the project's root directory.
 
-3.  **Start the Frontend Development Server:**
-    * Open another terminal, navigate to the `frontend` directory.
-    * Run the React app:
-        ```bash
-        npm start
-        # OR
-        yarn start
-        ```
-    * This will usually open the app in your browser at `http://localhost:3000`.
+Bash
 
-## Hugging Face Token
+# Navigate to the backend folder
+cd backend
 
-If you need to download models directly using the `transformers` or `sentence-transformers` library for tasks not handled by Ollama, or if you encounter download issues for specific models:
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-1.  Log in using the Hugging Face CLI (install it with `pip install huggingface_hub`):
-    ```bash
-    huggingface-cli login
-    ```
-    Paste your token (``) when prompted.
-2.  Alternatively, set it as an environment variable:
-    ```bash
-    export HUGGING_FACE_HUB_TOKEN=""
-    ```
-    For Ollama usage with default models, the token is generally not required.
+# Install Python dependencies
+pip install -r requirements.txt
+### 5. Set Up the Frontend
+Open a second terminal in the project's root directory.
 
-## JupyterLab for Experimentation
+Bash
 
-You can use JupyterLab to test parts of the backend logic:
-1.  Install JupyterLab in your backend's virtual environment: `pip install jupyterlab`
-2.  Run: `jupyter lab`
-3.  Create notebooks to experiment with `document_parser.py`, `embedder.py`, `graph_generator.py` logic before full integration.
+# Navigate to the frontend folder
+cd frontend
+
+# Install Node.js dependencies
+npm install
+### 6. Launch the Application!
+You'll need both terminals running simultaneously.
+
+In your first terminal (backend):
+
+Bash
+
+# Make sure you are in the backend/ directory with venv active
+flask run
+The backend will be available at http://127.0.0.1:5000.
+
+In your second terminal (frontend):
+
+Bash
+
+# Make sure you are in the frontend/ directory
+npm start
+The application will open in your browser at http://localhost:3000.
+
+## For Developers
+### Experimentation with JupyterLab
+If you want to experiment with the backend logic (document parsing, embedding, etc.), you can use JupyterLab.
+
+Bash
+
+# Install JupyterLab in the backend's virtual environment
+pip install jupyterlab
+
+# Start the server
+jupyter lab
+### Hugging Face Token
+Ollama handles the model downloads, so a Hugging Face token is generally not required to run this application. However, if you plan to modify the code to download models directly from the Hub, you can log in via the terminal:
+
+Bash
+
+pip install huggingface_hub
+huggingface-cli login
